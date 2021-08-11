@@ -73,7 +73,7 @@ export default {
               {
                 icon: 'mdi-plus',
                 name: 'Add Users',
-                route: '/users/create'
+                route: '/users/add'
               }
             ]
           },

@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Dashboard from '../views/Dashboard.vue'
+import UserList from '../views/users/List.vue'
+import UserAdd from '../views/users/Add.vue'
+import UserEdit from '../views/users/Edit.vue'
+import UserDetail from '../views/users/Detail.vue'
 
 Vue.use(VueRouter)
 
@@ -11,8 +15,20 @@ const routes = [
     component: Dashboard,
     children: [
       {
-        path: 'users/create',
-        component: Dashboard
+        path: 'users/list',
+        component: UserList
+      },
+      {
+        path: 'users/add',
+        component: UserAdd
+      },
+      {
+        path: 'users/edit/:id',
+        component: UserEdit
+      },
+      {
+        path: 'users/detail/:id',
+        component: UserDetail
       },
       {
         path: '',
