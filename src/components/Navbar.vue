@@ -8,6 +8,13 @@
         <span class="font-weight-light">Vue </span>
         <span>Admin</span>
       </v-toolbar-title>
+
+      <v-spacer></v-spacer>
+
+      <v-btn @click="logout" plain class="black--text">
+        <span>sign out</span>
+        <v-icon right>mdi-exit-to-app</v-icon>
+      </v-btn>
     </v-app-bar>
     <!-- End Navbar -->
     
@@ -81,6 +88,12 @@ export default {
       }
     },
     methods: {
+      logout: function(){
+        localStorage.removeItem('token')
+        console.log('logout')
+        this.$router.push('/login')
+
+      }
     }
 }
 </script>

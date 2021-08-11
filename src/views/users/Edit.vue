@@ -90,24 +90,33 @@ export default {
       /* data yang akan dikirim ke API create VA */  
       const data = this.data
       console.log(JSON.stringify(data))
-      // alert(data)
-
-      axios({
-        method: 'put',
-        url: 'https://reqres.in/api/users',
-        data: data
-
-      }).then(response => {
-        const results = response.data;
-        if(results.name){
-          alert('Update Success')
-          alert(JSON.stringify(results))
-          this.result = results
+      
+      if(this.data.name && this.data.job){
+        axios({
+          method: 'put',
+          url: 'https://reqres.in/api/users',
+          data: data
+  
+        }).then(response => {
+          const results = response.data;
+          if(results.name){
+            alert('Update User Success')
+            // alert(JSON.stringify(results))
+            this.result = results
+          }
+  
+        }).catch(error => {
+            console.log(error)
+        })
+      }else{
+        if(this.data.name){
+          alert('Please Input Job')
+        }else if(this.data.job){
+          alert('Please Input Name')
+        }else{
+          alert('Please Input Name and Job')
         }
-
-      }).catch(error => {
-          console.log(error)
-      })
+      }
     }
   }
 }

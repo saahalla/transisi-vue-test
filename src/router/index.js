@@ -5,29 +5,31 @@ import UserList from '../views/users/List.vue'
 import UserAdd from '../views/users/Add.vue'
 import UserEdit from '../views/users/Edit.vue'
 import UserDetail from '../views/users/Detail.vue'
+import Login from '../views/Login.vue'
+import Register from '../views/Register.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    name: 'Dashboard',
+    path: '/users/',
     component: Dashboard,
     children: [
       {
-        path: 'users/list',
+        path: 'list',
+        name: 'UserList',
         component: UserList
       },
       {
-        path: 'users/add',
+        path: 'add',
         component: UserAdd
       },
       {
-        path: 'users/edit/:id',
+        path: 'edit/:id',
         component: UserEdit
       },
       {
-        path: 'users/detail/:id',
+        path: 'detail/:id',
         component: UserDetail
       },
       {
@@ -35,6 +37,20 @@ const routes = [
         component: Dashboard
       }
     ]
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: Register
+  },
+  {
+    path: '',
+    component: Dashboard
   }
 ]
 
@@ -43,5 +59,13 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem('token') != null;
+
+  if ((to.name !== 'Login' && to.name !== 'Register') && !token) next({ name: 'Login' })
+  else next()
+})
+
 
 export default router
