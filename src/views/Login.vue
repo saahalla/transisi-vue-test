@@ -32,7 +32,7 @@
                 Login
               </v-btn>
               Don't have an account ? 
-              <a href="/register">Register</a>
+              <v-btn plain router to="/register">Register</v-btn>
             </p>
           </v-form>
         </v-card>

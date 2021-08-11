@@ -32,10 +32,12 @@
               <v-btn
                 color="primary"
                 @click="register"
+                class="mr-4"
               >
               Register
               </v-btn>
-              Already have an account ? <a href="/login">Login</a>
+              Already have an account ? 
+              <v-btn plain router to="/login">Login</v-btn>
             </p>
           </v-form>
         </v-card>
